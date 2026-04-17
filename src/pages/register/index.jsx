@@ -24,7 +24,7 @@ function Register() {
 
       console.log(result);
 
-      navigate(`/user/${user.id}`);
+      navigate(`/user/${result.user.id}`);
     } catch (err) {
       console.error(err);
     }
