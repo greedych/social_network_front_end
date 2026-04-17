@@ -42,6 +42,7 @@ function Post() {
   const isLike = post?.likes?.includes(currentUser?._id);
   const likesCount = post?.likes?.length || 0;
   const isFollow = currentUser?.following?.includes(post.user?._id);
+  const token = localStorage.getItem("token");
 
   // const removePost = () => {
   //   dispatch(deletePost(post._id));
@@ -51,7 +52,8 @@ function Post() {
 
   const timeAgo = () => {
     const date = new Date(post.createdAt);
-    const diff = Math.floor((Date.now() - date.getTime()) / 1000);
+    const now = new Date().getTime();
+    const diff = Math.floor((now - date.getTime()) / 1000);
 
     if (diff < 60) return "now";
     if (diff < 3600) return `${Math.floor(diff / 60)}min`;
@@ -65,6 +67,7 @@ function Post() {
   };
 
   const onLike = async () => {
+    if (!token) return;
     // setIsLike((prev) => !prev);
     // setLikesCount((prev) => (!isLike ? prev + 1 : prev - 1));
 
@@ -80,6 +83,7 @@ function Post() {
   };
 
   const onSubmit = async (data) => {
+    if (!token) return;
     try {
       const result = await dispatch(
         createComment({ postId: post._id, text: data.text }),
@@ -139,7 +143,7 @@ function Post() {
                     />
                     <Typography>{post.user?.username}</Typography>
                   </Stack>
-                  {currentUser &&
+                  {token &&
                     currentUser?._id !== post.user?._id &&
                     !isFollow && <Button size="small">Follow</Button>}
                 </Stack>

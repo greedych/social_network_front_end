@@ -129,7 +129,7 @@ function User() {
                 Edit profile
               </Button>
             )}
-            {currentUser?._id !== user?._id && !isFollow && (
+            {token && currentUser?._id !== user?._id && !isFollow && (
               <Button onClick={followToUser} variant="contained">
                 Follow
               </Button>

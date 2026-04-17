@@ -3,11 +3,12 @@ import { useNavigate } from "react-router-dom";
 import FormContainer from "../../components/formContainer";
 import { ErrorText, RegisterButton, RegisterForm } from "./styles";
 import { useForm } from "react-hook-form";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { registerUser } from "../../redux/slices/authSlice";
 
 function Register() {
   const navigate = useNavigate();
+  const { user } = useSelector((state) => state.auth);
 
   const dispatch = useDispatch();
 
@@ -23,14 +24,14 @@ function Register() {
 
       console.log(result);
 
-      navigate("/main");
+      navigate(`/user/${user.id}`);
     } catch (err) {
       console.error(err);
     }
   };
 
   return (
-    <Stack>
+    <Stack alignItems={"center"}>
       <FormContainer
         text={"Have an account? "}
         linkText={"Log in"}

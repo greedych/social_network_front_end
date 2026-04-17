@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { Stack } from "@mui/material";
+import { Stack, Typography } from "@mui/material";
 
 export const FormStack = styled(Stack)(({ theme }) => ({
   border: `1px solid ${theme.palette.divider}`,
@@ -16,7 +16,13 @@ export const NovigationBox = styled(Stack)(({ theme }) => ({
   borderRadius: "1px",
   justifyContent: "center",
   alignItems: "center",
-  padding: "11px 60px",
+  padding: "11px",
   flexDirection: "row",
   gap: theme.spacing(0.5),
+  width: "100%",
+}));
+
+export const NavigationLink = styled(Typography)(({ theme }) => ({
+  color: theme.palette.primary.main,
+  textDecoration: "none",
 }));

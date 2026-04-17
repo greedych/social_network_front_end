@@ -10,7 +10,7 @@ function Login() {
   const navigate = useNavigate();
 
   const dispatch = useDispatch();
-  const { user, message } = useSelector((state) => state.auth);
+  const { user } = useSelector((state) => state.auth);
 
   const {
     register,
@@ -30,7 +30,7 @@ function Login() {
   };
 
   return (
-    <Stack>
+    <Stack alignItems={"center"}>
       <FormContainer
         text={"Don't have an account?"}
         linkText={"Sign up!"}

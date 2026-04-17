@@ -10,7 +10,7 @@ function PostsList({ posts }) {
       paddingTop={"100px"}
     >
       {posts.map((post) => (
-        <MainPost post={post} />
+        <MainPost key={post._id} post={post} />
       ))}
     </Grid>
   );

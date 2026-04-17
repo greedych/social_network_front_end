@@ -84,7 +84,8 @@ function MainPost({ post }) {
 
   const timeAgo = (createdAt) => {
     const date = new Date(createdAt);
-    const diff = Math.floor((Date.now() - date.getTime()) / 1000);
+    const now = new Date().getTime();
+    const diff = Math.floor((now - date.getTime()) / 1000);
 
     if (diff < 60) return "now";
     if (diff < 3600) return `${Math.floor(diff / 60)}min`;
